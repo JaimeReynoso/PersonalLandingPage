@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-4  mx-auto">
+    <h2>Personal Landing Page</h2>
+  </div>
+</div>
+
+
+<div *ngIf="weather" class="row" >
+    <div *ngFor="let itm of weather" class="col-2">
+      <div class="text-center card">
+        <img class="card-img-top" [src]="itm.icon" />
+        <div class="card-body">
+          <h5 class="card-title">{{itm.name}}</h5>
+          <p>{{itm.temperature}} {{itm.temperatureUnit}}</p>
+          <p>{{itm.shortForecast}}</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<h1>Tops News Articles</h1>
+<p>Here are some of the top New York Times articles</p>
+
+<div *ngIf="topNews" class="row">
+  <div *ngFor="let news of topNews" class="col-10 mx-auto">
+    <div class="media">
+        <img class="mr-3" [src]="news.multimedia[0].url" *ngIf="news.multimedia">
+    
+    <div class="media-body">
+      <h4 class="mt-0"><a [href]="news.url">{{news.title}}</a></h4>
+        <h6>{{news.section}}</h6>
+        <p>{{news.abstract}}</p>
+      </div>
+    </div>
+  </div>
+</div>
