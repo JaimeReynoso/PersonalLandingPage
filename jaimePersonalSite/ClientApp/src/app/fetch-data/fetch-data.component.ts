@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-fetch-data',
@@ -10,6 +12,7 @@ export class FetchDataComponent {
   public topNews: News[];
   public weather: Weather[];
   public loc: string;
+  public pg: number;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<News[]>(baseUrl + 'api/News/GetTopNews').subscribe(result => {

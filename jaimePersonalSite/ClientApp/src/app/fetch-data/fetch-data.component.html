@@ -22,15 +22,16 @@
 <p>Here are some of the top New York Times articles</p>
 
 <div *ngIf="topNews" class="row">
-  <div *ngFor="let news of topNews" class="col-10 mx-auto">
+  <div *ngFor="let news of topNews| paginate: { itemsPerPage: 5, currentPage: p }" class="col-10 mx-auto">
     <div class="media">
-        <img class="mr-3" [src]="news.multimedia[0].url" *ngIf="news.multimedia">
-    
-    <div class="media-body">
-      <h4 class="mt-0"><a [href]="news.url">{{news.title}}</a></h4>
+      <img class="mr-3" [src]="news.multimedia[0].url" *ngIf="news.multimedia[0]">
+
+      <div class="media-body">
+        <h4 class="mt-0"><a [href]="news.url">{{news.title}}</a></h4>
         <h6>{{news.section}}</h6>
         <p>{{news.abstract}}</p>
       </div>
     </div>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
